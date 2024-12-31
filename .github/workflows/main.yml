@@ -15,3 +15,5 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+    - name: Run regression_test1.sh
+      run: bash ./regression_test1.sh

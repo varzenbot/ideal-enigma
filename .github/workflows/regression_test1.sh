@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TEST_OUTPUT=$(go run ../main.go)
+TEST_OUTPUT=$(go run ../main.go | tr -d '\r')
 if [[ ${TEST_OUTPUT} = "Hello, World!" ]]
 then
   return 0

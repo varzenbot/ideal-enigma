@@ -3,7 +3,7 @@
 TEST_OUTPUT=$(go run ../main.go | tr -d '\r')
 if [[ ${TEST_OUTPUT} = "Hello, World!" ]]
 then
-  return 0
+  exit 0
 fi
 echo "FAILED regression_test1"
-return 1
+exit 1

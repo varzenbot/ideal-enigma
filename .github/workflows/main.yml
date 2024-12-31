@@ -6,6 +6,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./regressions/
 
     steps:
     - uses: actions/checkout@v1
@@ -15,3 +18,5 @@ jobs:
       run: |
         echo Add other actions to build,
         echo test, and deploy your project.
+    - name: Run regression_test1.sh
+      run: bash ./regression_test1.sh

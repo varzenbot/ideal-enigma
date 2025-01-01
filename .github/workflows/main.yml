@@ -12,11 +12,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: echo Hello, world!
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+    - name: Set execute flags for regression tests
+      run: chmod +x ./regression_test*.sh      
     - name: Run regression_test1.sh
-      run: bash ./regression_test1.sh
+      run: bash ./run_regression_tests.sh

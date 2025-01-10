@@ -5,6 +5,9 @@ TESTS="1"
 # start the server
 go run ../main.go &
 
+# wait for the server to start
+sleep 1
+
 for TEST in ${TESTS}
 do
   echo "Running regression_test${TEST}"

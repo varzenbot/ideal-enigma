@@ -16,7 +16,7 @@ do
   TIMEOUT=$((TIMEOUT-1))
   if [[ ${TIMEOUT} -eq 0 ]]
   then
-    echo "error: server did not start"
+    echo "error: server did not start after 30 sec"
     kill %1
     exit 1
   fi

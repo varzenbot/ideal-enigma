@@ -7,10 +7,19 @@ go run ../main.go &
 
 # wait for the server to start
 
+typeset TIMEOUT=30
+
 while ! lsof -i :27016
 do
   echo "warning: server is not running on port 27016"
   sleep 1
+  TIMEOUT=$((TIMEOUT-1))
+  if [[ ${TIMEOUT} -eq 0 ]]
+  then
+    echo "error: server did not start"
+    kill %1
+    exit 1
+  fi
 done
 
 for TEST in ${TESTS}

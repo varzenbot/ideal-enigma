@@ -2,6 +2,9 @@
 
 TESTS="1"
 
+# start the server
+go run ../main.go &
+
 for TEST in ${TESTS}
 do
   (if [[ -f "regression_test${TEST}.sh" ]]
@@ -13,3 +16,6 @@ do
     fi
   fi)
 done
+
+# stop the server
+kill %1

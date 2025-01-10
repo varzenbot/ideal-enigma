@@ -10,13 +10,18 @@ do
   echo "Running regression_test${TEST}"
   (if [[ -f "regression_test${TEST}.sh" ]]
   then
-    if ! ./regression_test${TEST}.sh
+    if ! "./regression_test${TEST}.sh"
     then
       echo "FAILED regression_test${TEST}"
       exit 1
     fi
     echo "PASSED regression_test${TEST}"
   fi)
+  if $? -ne 0
+  then
+    echo "ERROR: regression_test${TEST} failed"
+    exit 1
+  fi
 done
 
 # stop the server

@@ -6,7 +6,12 @@ TESTS="1"
 go run ../main.go &
 
 # wait for the server to start
-sleep 1
+
+while ! lsof -i :27016
+do
+  echo "warning: server is not running on port 27016"
+  sleep 1
+done
 
 for TEST in ${TESTS}
 do

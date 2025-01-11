@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TESTS="1"
+TESTS=$(ls regression_test*.sh 2>/dev/null)
 
 # start the server
 go run ../main.go &
@@ -24,16 +24,16 @@ done
 
 for TEST in ${TESTS}
 do
-  echo "Running regression_test${TEST}"
-  if [[ -f "regression_test${TEST}.sh" ]]
+  echo "Running ${TEST}"
+  if [[ -f "${TEST}" ]]
   then
-    if ! "./regression_test${TEST}.sh"
+    if ! "./${TEST}"
     then
-      echo "FAILED regression_test${TEST}"
+      echo "FAILED ${TEST}"
       kill %1
       exit 1
     fi
-    echo "PASSED regression_test${TEST}"
+    echo "PASSED ${TEST}"
   fi
 done
 

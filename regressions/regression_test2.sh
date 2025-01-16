@@ -2,7 +2,7 @@
 
 echo "Testing windows functionality"
 
-TEST_OUTPUT=$(curl -s -X GET localhost:27016/windows?name=World)
+TEST_OUTPUT=$(curl -s -X GET localhost:8080/windows?name=World)
 if [[ ${TEST_OUTPUT} = "Hello, World, !" ]]
 then
   echo "PASSED $(basename "$0")!"

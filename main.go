@@ -18,9 +18,9 @@ func handle_windows(w http.ResponseWriter, r *http.Request) {
 
 func main() {
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		w.Write([]byte("Hello, World!"))
+		w.Write([]byte("Hello, Web!"))
 	})
 
 	http.HandleFunc("/windows", handle_windows)
-	http.ListenAndServe(":27016", nil)
+	http.ListenAndServe(":8080", nil)
 }

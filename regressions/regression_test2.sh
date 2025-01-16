@@ -11,7 +11,7 @@ else
     echo "ERROR: we got ->  \"${TEST_OUTPUT}\""
 fi
 
-TEST_OUTPUT=$(curl -s -X GET localhost:27016/windows?name=World\&field=value)
+TEST_OUTPUT=$(curl -s -X GET localhost:8080/windows?name=World\&field=value)
 if [[ ${TEST_OUTPUT} = "Hello, World, value, !" ]]
 then
   echo "PASSED $(basename "$0")!"

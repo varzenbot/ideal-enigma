@@ -1,7 +1,7 @@
 #!/bin/bash
 
 TEST_OUTPUT=$(curl -s -X GET localhost:8080)
-if [[ ${TEST_OUTPUT} = "Hello, World!" ]]
+if [[ ${TEST_OUTPUT} = "Hello, Web!" ]]
 then
   echo "PASSED $(basename $0)!"
   exit 0

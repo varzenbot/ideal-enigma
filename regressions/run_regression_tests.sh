@@ -9,7 +9,7 @@ go run ../main.go &
 
 typeset TIMEOUT=30
 
-while ! lsof -i :27016
+while ! lsof -i :8080
 do
   echo "warning: server is not running on port 27016 - timeout in ${TIMEOUT} sec"
   sleep 1

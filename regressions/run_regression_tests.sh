@@ -8,10 +8,11 @@ go run ../main.go &
 # wait for the server to start
 
 typeset TIMEOUT=30
+export PORTNR=8080
 
-while ! lsof -i :8080
+while ! lsof -i :${PORTNR}
 do
-  echo "warning: server is not running on port 27016 - timeout in ${TIMEOUT} sec"
+  echo "warning: server is not running on port ${PORTNR} - timeout in ${TIMEOUT} sec"
   sleep 1
   TIMEOUT=$((TIMEOUT-1))
   if [[ ${TIMEOUT} -eq 0 ]]

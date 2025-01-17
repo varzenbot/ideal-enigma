@@ -2,8 +2,15 @@
 
 TESTS=$(ls regression_test*.sh 2>/dev/null)
 
+function cleanup {
+  kill ${SERVER_PID}
+  wait ${SERVER_PID}
+  exit $1
+}
+
 # start the server
 go run ../main.go &
+SERVER_PID=$!
 
 # wait for the server to start
 
@@ -18,8 +25,7 @@ do
   if [[ ${TIMEOUT} -eq 0 ]]
   then
     echo "error: server did not start after 30 sec"
-    kill %1
-    exit 1
+    cleanup 1
   fi
 done
 
@@ -31,14 +37,11 @@ do
     if ! "./${TEST}"
     then
       echo "FAILED ${TEST}"
-      kill %1
-      exit 1
+      cleanup 1
     fi
     echo "PASSED ${TEST}"
   fi
 done
 
 # stop the server
-kill %1
-
-exit 0
+cleanup 0

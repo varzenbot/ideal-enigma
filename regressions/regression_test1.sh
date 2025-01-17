@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TEST_OUTPUT=$(curl -s -X GET localhost:8080)
+TEST_OUTPUT=$(curl -s -X GET localhost:${PORTNR})
 if [[ ${TEST_OUTPUT} = "Hello, Web!" ]]
 then
   echo "PASSED $(basename $0)!"

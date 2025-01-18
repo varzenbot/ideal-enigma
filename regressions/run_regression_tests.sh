@@ -3,13 +3,14 @@
 TESTS=$(ls regression_test*.sh 2>/dev/null)
 
 function cleanup {
-  kill ${SERVER_PID}
+  pkill -9 "hello_web"
   wait ${SERVER_PID}
   exit $1
 }
 
 # start the server
-go run ../main.go &
+go build -o ../hello_web ../main.go
+../hello_web &
 SERVER_PID=$!
 
 # wait for the server to start

@@ -6,8 +6,8 @@ COPY go.mod .
 RUN go mod download
 
 COPY main.go .
-RUN go build -o main .
+RUN go build -o hello_web .
 
 EXPOSE 8080
 
-CMD ["./main"]
+CMD ["./hello_web"]
